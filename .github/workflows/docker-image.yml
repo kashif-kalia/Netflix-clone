@@ -21,4 +21,5 @@ jobs:
        # DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
         #DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       run: |
-       docker login -u ${{env.DOCKER_USERNAME}} -p ${{env.DOCKER_PASSWORD}}
+       docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secret.DOCKER_PASSWORD}}
+       #Secrets can either be used directly, or can be bound to a env-variable and then be used. Both approach work.
