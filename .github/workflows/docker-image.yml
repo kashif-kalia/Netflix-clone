@@ -23,3 +23,9 @@ jobs:
       run: |
        docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
        #Secrets can either be used directly, or can be bound to a env-variable and then be used. Both approach work.
+   
+    - name: Build the Docker image
+      run: |
+        docker build --build-arg TMDB_V3_API_KEY=AJ7AYe14eca3e76864yah319b92 -t netflix .
+        docker tag netflix kashifahmed/github-action-images:latest
+        
