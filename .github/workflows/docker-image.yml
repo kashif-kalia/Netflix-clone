@@ -33,3 +33,13 @@ jobs:
     - name: Push Docker image to DockerHub
       run: | 
         docker push kashifahmed/github-action-images:${{ env.SHORT_SHA }} 
+         
+    - name: Run Trivy vulnerability scanner
+      uses: aquasecurity/trivy-action@master
+      with:
+          image-ref: 'docker.io/kashifahmed/github-action-images:${{ env.SHORT_SHA }} '
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'    
