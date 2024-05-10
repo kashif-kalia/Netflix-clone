@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ "main" ]
 env: 
- SHORT_SHA: $(echo ${{env.SHORT_SHA }} | cut -c 1-8)
+ SHORT_SHA: $(echo ${{env.github.SHA }} | cut -c 1-8)
 jobs:
 
   build:
