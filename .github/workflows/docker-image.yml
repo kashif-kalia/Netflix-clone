@@ -28,16 +28,16 @@ jobs:
     - name: Build the Docker image
       run: |
         docker build --build-arg TMDB_V3_API_KEY=AJ7AYe14eca3e76864yah319b92 -t netflix .
-        docker tag netflix kashifahmed/github-action-images:${{ env.SHORT_SHA }} 
+        docker tag netflix kashifahmed/github-action-images:${{ github.SHA }} 
         
     - name: Push Docker image to DockerHub
       run: | 
-        docker push kashifahmed/github-action-images:${{ env.SHORT_SHA }} 
+        docker push kashifahmed/github-action-images:${{ github.SHA }} 
          
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@master
       with:
-          image-ref: 'docker.io/kashifahmed/github-action-images:${{ env.SHORT_SHA }} '
+          image-ref: 'docker.io/kashifahmed/github-action-images:${{ github.SHA }} '
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
