@@ -22,7 +22,7 @@ jobs:
       
        SONARQUBE_USERNAME="${{ secrets.SONARQUBE_USERNAME }}"
        SONARQUBE_PASSWORD="${{ secrets.SONARQUBE_PASSWORD }}"
-       SONARQUBE_URL="http://localhost:9000"
+       SONARQUBE_URL="http://127.0.0.1:9000"
 
        # Perform login request
        response=$(curl -u "${SONARQUBE_USERNAME}:${SONARQUBE_PASSWORD}" -X POST "${SONARQUBE_URL}/api/authentication/login")
