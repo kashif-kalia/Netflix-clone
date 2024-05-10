@@ -16,13 +16,26 @@ jobs:
     steps:
     - name: checkout the code
       uses: actions/checkout@v4
-   
+
+    - name: Login to SonarQube
+      run: |
+      
+       SONARQUBE_USERNAME="${{ secrets.SONARQUBE_USERNAME }}"
+       SONARQUBE_PASSWORD="${{ secrets.SONARQUBE_PASSWORD }}"
+       SONARQUBE_URL="http://localhost:9000"
+
+       # Perform login request
+       response=$(curl -u "${SONARQUBE_USERNAME}:${SONARQUBE_PASSWORD}" -X POST "${SONARQUBE_URL}/api/authentication/login")
+
+       # Check if login was successful
+       if [[ "$response" == *"Authentication successful"* ]]; then
+        echo "Logged in to SonarQube successfully"
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} 
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}  
-     
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}   
+   
     - name: Login to Docker Hub
       #env:
        # DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
