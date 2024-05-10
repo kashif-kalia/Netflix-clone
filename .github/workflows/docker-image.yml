@@ -27,8 +27,8 @@ jobs:
     - name: Build the Docker image
       run: |
         docker build --build-arg TMDB_V3_API_KEY=AJ7AYe14eca3e76864yah319b92 -t netflix .
-        docker tag netflix kashifahmed/github-action-images:latest
+        docker tag netflix kashifahmed/github-action-images:${{ github.sha }} 
         
     - name: Push Docker image to DockerHub
       run: | 
-        docker push kashifahmed/github-action-images:latest
+        docker push kashifahmed/github-action-images:${{ github.sha }} 
