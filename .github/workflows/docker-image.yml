@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ "main" ]
 env: 
- SHORT_SHA: $(echo ${{ github.sha }} | cut -c 1-8)
+ SHORT_SHA: $(echo ${{env.SHORT_SHA }} | cut -c 1-8)
 jobs:
 
   build:
@@ -28,8 +28,8 @@ jobs:
     - name: Build the Docker image
       run: |
         docker build --build-arg TMDB_V3_API_KEY=AJ7AYe14eca3e76864yah319b92 -t netflix .
-        docker tag netflix kashifahmed/github-action-images:${{ env.github.sha }} 
+        docker tag netflix kashifahmed/github-action-images:${{ env.SHORT_SHA }} 
         
     - name: Push Docker image to DockerHub
       run: | 
-        docker push kashifahmed/github-action-images:${{ env.github.sha }} 
+        docker push kashifahmed/github-action-images:${{ env.SHORT_SHA }} 
