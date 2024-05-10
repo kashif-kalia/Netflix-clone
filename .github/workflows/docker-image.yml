@@ -33,6 +33,10 @@ jobs:
     - name: Push Docker image to DockerHub
       run: | 
         docker push kashifahmed/github-action-images:${{ github.SHA }} 
+
+    - name: Create SARIF directory
+      run: mkdir -p /home/runner/work/Netflix-clone/Netflix-clone
+    
          
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@master
