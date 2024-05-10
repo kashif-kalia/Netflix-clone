@@ -35,7 +35,7 @@ jobs:
         docker push kashifahmed/github-action-images:${{ github.SHA }} 
 
     - name: Create SARIF directory
-      run: mkdir -p /home/runner/work/Netflix-clone/Netflix-clone
+      run: mkdir -p /home/runner/work/Netflix-clone/trivy-results.sarif
     
          
     - name: Run Trivy vulnerability scanner
