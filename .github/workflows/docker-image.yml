@@ -22,16 +22,11 @@ jobs:
       with:
        projectBaseDir: .
        args: >
-       
-        -Dsonar.projectKey=netflix \
-        -Dsonar.sources=. \
-        -Dsonar.host.url=http://127.0.0.1:9000 \ 
-        -Dsonar.login=sqp_d9be7ea0acae8335baee333a4f9aaa74e43dde1d
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} //Sonar Token generated 
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} 
-        # SONARQUBE_USERNAME: ${{ secrets.SONARQUBE_USERNAME }}
-        # SONARQUBE_PASSWORD: ${{ secrets.SONARQUBE_PASSWORD }}
+        -Dsonar.projectKey=netflix
+        -Dsonar.sources=.
+        -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}
+        -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+
        
     - name: Login to Docker Hub
       #env:
