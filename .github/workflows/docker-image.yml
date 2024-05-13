@@ -22,9 +22,10 @@ jobs:
       with:
        projectBaseDir: .
        args: >
-        -Dsonar.projectKey=netflix 
-        -Dsonar.sources=. 
-        -Dsonar.host.url=http://127.0.0.1:9000 
+        sonar-scanner \
+        -Dsonar.projectKey=netflix \
+        -Dsonar.sources=. \
+        -Dsonar.host.url=http://127.0.0.1:9000 \ 
         -Dsonar.login=sqp_d9be7ea0acae8335baee333a4f9aaa74e43dde1d
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} //Sonar Token generated 
