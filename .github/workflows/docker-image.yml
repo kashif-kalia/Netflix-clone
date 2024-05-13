@@ -22,7 +22,7 @@ jobs:
       with:
        projectBaseDir: .
        args: >
-        sonar-scanner \
+       
         -Dsonar.projectKey=netflix \
         -Dsonar.sources=. \
         -Dsonar.host.url=http://127.0.0.1:9000 \ 
