@@ -24,9 +24,9 @@ jobs:
        args: >
         -Dsonar.projectKey=netflix
         -Dsonar.sources=.
-        -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}
-        -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
        
     - name: Login to Docker Hub
       #env:
