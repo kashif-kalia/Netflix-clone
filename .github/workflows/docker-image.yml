@@ -19,13 +19,17 @@ jobs:
       
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master
-      with:
-       projectBaseDir: .
-       args: -Dsonar.projectKey=netflix -Dsonar.sources=.
       env:
        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
+      with:
+       projectBaseDir: .
+       args: 
+          -Dsonar.projectKey=netflix 
+          -Dsonar.sources=.
+          -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}
+          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+     
     - name: Login to Docker Hub
       #env:
        # DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
