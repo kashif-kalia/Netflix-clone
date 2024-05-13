@@ -18,7 +18,7 @@ jobs:
       uses: actions/checkout@v4
       
     - name: SonarQube Scan
-      uses: sonarsource/sonarqube-scan-action@vi
+      uses: sonarsource/sonarqube-scan-action@master
       with:
        projectBaseDir: .
        args: >
