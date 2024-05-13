@@ -18,12 +18,17 @@ jobs:
       uses: actions/checkout@v4
       
     - name: SonarQube Scan
-      uses: sonarsource/sonarqube-scan-action@master
+      uses: sonarsource/sonarqube-scan-action@vi
+      with:
+       projectBaseDir: .
+       args: >
+        -Dsonar.login=sqp_d9be7ea0acae8335baee333a4f9aaa74e43dde1d
+        -Dsonar.projectKey=netflix
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} //Sonar Token generated 
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} 
-        SONARQUBE_USERNAME: ${{ secrets.SONARQUBE_USERNAME }}
-        SONARQUBE_PASSWORD: ${{ secrets.SONARQUBE_PASSWORD }}
+        # SONARQUBE_USERNAME: ${{ secrets.SONARQUBE_USERNAME }}
+        # SONARQUBE_PASSWORD: ${{ secrets.SONARQUBE_PASSWORD }}
        
     - name: Login to Docker Hub
       #env:
