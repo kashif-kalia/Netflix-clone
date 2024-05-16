@@ -29,6 +29,16 @@ jobs:
         projectBaseDir: .
         args: >
          -Dsonar.projectKey=netflix 
+         
+    - name: Check quality gate
+      id: check_quality_gate
+      run: |
+          status=$(curl -s -X POST -u "${{ secrets.SONAR_TOKEN }}:" "https://sonarcloud.io/api/qualitygates/project_status?projectKey=netflix" | jq -r .projectStatus.status)
+          if [[ "$status" != "OK" ]]; then
+            echo "Quality gate failed. Stopping the pipeline."
+            exit 1
+          fi    
+
           
     - name: Login to Docker Hub
       #env:
