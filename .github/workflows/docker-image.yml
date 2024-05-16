@@ -37,7 +37,9 @@ jobs:
           if [[ "$status" != "OK" ]]; then
             echo "Quality gate failed. Stopping the pipeline."
             exit 1
-          fi    
+          fi      
+      env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}    
 
           
     - name: Login to Docker Hub
